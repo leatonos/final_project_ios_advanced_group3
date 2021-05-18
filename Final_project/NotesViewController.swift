@@ -37,7 +37,8 @@ class NotesViewController: UIViewController {
 extension NotesViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You selected this note")
+        
+        performSegue(withIdentifier: "readNote", sender: nil)
     }
     
 }
