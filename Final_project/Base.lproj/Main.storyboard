@@ -60,42 +60,64 @@
                     </view>
                     <connections>
                         <outlet property="categoryTableView" destination="XB7-3a-Md9" id="1qA-S8-EQD"/>
+                        <segue destination="fte-dw-ppu" kind="show" identifier="showNotes" id="wdv-08-TtY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-99" y="87"/>
         </scene>
-        <!--View Controller-->
+        <!--Notes View Controller-->
         <scene sceneID="6p2-KF-K7l">
             <objects>
-                <viewController id="fte-dw-ppu" sceneMemberID="viewController">
+                <viewController id="fte-dw-ppu" customClass="NotesViewController" customModule="Final_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4eg-Db-Hf8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BI1-vw-VRO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWZ-2C-7JN">
-                                        <rect key="frame" x="166" y="0.0" width="82" height="38.5"/>
+                                        <rect key="frame" x="166" y="0.0" width="82" height="81"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DTT-m8-KkZ">
-                                        <rect key="frame" x="0.0" y="39" width="414" height="621"/>
+                                        <rect key="frame" x="0.0" y="81" width="414" height="40"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVV-VV-zP0">
-                                        <rect key="frame" x="161.5" y="660" width="91" height="30"/>
+                                        <rect key="frame" x="161.5" y="121" width="91" height="40.5"/>
                                         <state key="normal" title="Sort by: Date"/>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nDg-Zm-WYP">
-                                        <rect key="frame" x="0.0" y="690" width="414" height="128"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nDg-Zm-WYP">
+                                        <rect key="frame" x="0.0" y="161.5" width="414" height="565.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noteCell" rowHeight="120" id="jX9-DF-y0x">
+                                                <rect key="frame" x="0.0" y="24.5" width="414" height="120"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jX9-DF-y0x" id="MdO-0N-8PL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6I-ZG-yzr">
+                                        <rect key="frame" x="176" y="727" width="62" height="81"/>
+                                        <state key="normal" title="Add note"/>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="rVV-VV-zP0" firstAttribute="height" secondItem="BI1-vw-VRO" secondAttribute="height" multiplier="0.05" id="38g-xW-s59"/>
+                                    <constraint firstItem="bWZ-2C-7JN" firstAttribute="height" secondItem="BI1-vw-VRO" secondAttribute="height" multiplier="0.1" id="8xK-aa-TnL"/>
+                                    <constraint firstItem="c6I-ZG-yzr" firstAttribute="height" secondItem="BI1-vw-VRO" secondAttribute="height" multiplier="0.1" id="Bxl-3t-R3Z"/>
+                                    <constraint firstItem="nDg-Zm-WYP" firstAttribute="height" secondItem="BI1-vw-VRO" secondAttribute="height" multiplier="0.7" id="uxb-zZ-GJl"/>
+                                    <constraint firstItem="DTT-m8-KkZ" firstAttribute="height" secondItem="BI1-vw-VRO" secondAttribute="height" multiplier="0.05" id="vBX-v0-y8w"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ekc-c0-F3k"/>
@@ -108,6 +130,10 @@
                             <constraint firstItem="Ekc-c0-F3k" firstAttribute="bottom" secondItem="BI1-vw-VRO" secondAttribute="bottom" id="abf-PD-M05"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="VRs-4o-FDI"/>
+                    <connections>
+                        <outlet property="notesTableView" destination="nDg-Zm-WYP" id="t9z-UF-ioj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJW-HY-gVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
