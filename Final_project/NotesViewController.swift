@@ -21,7 +21,8 @@ class NotesViewController: UIViewController {
         note(title: "Hard day at school", date: "08/04/2021", text: "Don`t know")
     ]
     
-    @IBOutlet var notesTableView: UITableView!
+    @IBOutlet weak var notesTableView: UITableView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +51,9 @@ extension NotesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath)
         
-        cell.textLabel?.text = diaryNotes[indexPath.row].title
+        cell.textLabel?.text = diaryNotes[indexPath.row].title + "\n" + diaryNotes[indexPath.row].date
         cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textColor = .white
         
         
         return cell
