@@ -38,7 +38,7 @@ class AddNotesVC: UIViewController, CLLocationManagerDelegate {
             txtFldCategory.isHidden = true
         } else {
             
-            arrayCategory = DBManager.shared.readData(nil, CATEGORIES_TABLE) as! [CategoryDetailsModel]
+            arrayCategory = CoreDataManager.shared.getData(CATEGORY_ENTITY) as! [CategoryDetailsModel]
             catID = Int(notesDetail.catId) ?? 0
             let selectedCat = arrayCategory.filter { first in
                 return first.id == catID
@@ -76,7 +76,7 @@ class AddNotesVC: UIViewController, CLLocationManagerDelegate {
         
         locationManager.startUpdatingLocation()
         
-        self.navigationItem.title = notesDetail == nil ? "New Notes" : "Edit Notes"
+        self.navigationItem.title = notesDetail == nil ? "New Note" : "Edit Note"
         
         // constantCatTop.constant = -65
         
@@ -94,6 +94,8 @@ class AddNotesVC: UIViewController, CLLocationManagerDelegate {
         userLocation = locations[0].coordinate
     }
     
+    
+    // Add Note
     @objc func addNotes(_ sender: UIBarButtonItem) {
         var willSave = false
         var strAlert = ""
@@ -113,14 +115,14 @@ class AddNotesVC: UIViewController, CLLocationManagerDelegate {
                 "id": notesDetail.id ?? 0,
                 "catId": catID.description,
                 "title": txtFldTitle.text!,
-                "description": txtVwDescription.text!,
+                "desc": txtVwDescription.text!,
                 "addedOn": Date().timeIntervalSince1970.description,
                 "latitude": userLocation!.latitude.description,
                 "longitute": userLocation!.longitude.description,
                 "images": arrayImages.joined(separator: ",")
             ]
-
-            DBManager.shared.updateParticularRow(notesDetail.id, NotesDetailsModel(dict)) { success in
+            
+            CoreDataManager.shared.updateData(NOTES_ENTITY, notesDetail.id, dict) { success in
                 if success {
                     AlertControl.shared.showAlert("Success!", message: "Your data updated successfully.", buttons: ["OK"]) { _ in
                         for controller in self.navigationController!.viewControllers as Array {
@@ -133,19 +135,16 @@ class AddNotesVC: UIViewController, CLLocationManagerDelegate {
                 }
             }
         } else {
-            
-            DBManager.shared.createTable(NOTES_TABLE)
             let dict: [String: Any] = [
                 "catId": catID.description,
                 "title": txtFldTitle.text!,
-                "description": txtVwDescription.text!,
+                "desc": txtVwDescription.text!,
                 "addedOn": Date().timeIntervalSince1970.description,
                 "latitude": userLocation!.latitude.description,
                 "longitute": userLocation!.longitude.description,
                 "images": arrayImages.joined(separator: ",")
             ]
-            
-            DBManager.shared.insertSingleValue(NOTES_TABLE, NotesDetailsModel(dict)) { success in
+            CoreDataManager.shared.insertData(NOTES_ENTITY, dict) { success in
                 if success {
                     AlertControl.shared.showAlert("Success!", message: "Your data saved successfully.", buttons: ["OK"]) { _ in
                         self.navigationController?.popViewController(animated: true)
@@ -155,10 +154,11 @@ class AddNotesVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Action Camera Button
     @IBAction func btnActnCamera(_ sender: Any) {
         CameraHandler.shared.pickImage(self) { image in
             let imageName = Int(Date().timeIntervalSince1970).description + ".png"
-            _ = DBManager.shared.saveImageDocumentDirectory(image, imageName)
+            _ = FileSaveManager.shared.saveImageDocumentDirectory(image, imageName)
             self.arrayImages.append(imageName)
             self.collectionVwImages.reloadData()
         }

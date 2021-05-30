@@ -40,8 +40,8 @@ class NotesVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addNotes(_:)))
         
-        DBManager.shared.createTable(NOTES_TABLE)
-        arrayAllNotes = DBManager.shared.readData(catId, NOTES_TABLE) as! [NotesDetailsModel]
+    
+        FileSaveManager.shared.getBaseUrl()
 
         // Do any additional setup after loading the view.
     }
@@ -49,12 +49,13 @@ class NotesVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        arrayAllNotes = DBManager.shared.readData(catId, NOTES_TABLE) as! [NotesDetailsModel]
-        arrayNotes = DBManager.shared.readData(catId, NOTES_TABLE) as! [NotesDetailsModel]
+        arrayAllNotes = CoreDataManager.shared.getData(NOTES_ENTITY, catId.description) as! [NotesDetailsModel]
+        arrayNotes = CoreDataManager.shared.getData(NOTES_ENTITY, catId.description) as! [NotesDetailsModel]
         tblVwNotes.reloadData()
         setDataAsPerSort()
     }
     
+    // Add Note Click
     @objc func addNotes(_ sender: UIBarButtonItem) {
         let vc = self.storyboard?.instantiateViewController(identifier: "AddNotesVC") as! AddNotesVC
         vc.catID = catId
@@ -86,6 +87,7 @@ class NotesVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    // Sorting function
     func setDataAsPerSort() {
         txtFldSort.text = arraySort[selectedSort]
         if selectedSort == 0 {

@@ -15,9 +15,7 @@ class CategoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        DBManager.shared.createTable(CATEGORIES_TABLE)
-        arrayCategory = DBManager.shared.readData(nil, CATEGORIES_TABLE) as! [CategoryDetailsModel]
+        self.arrayCategory = CoreDataManager.shared.getData(CATEGORY_ENTITY) as! [CategoryDetailsModel]
         tblVwCategory.reloadData()
         
         self.navigationItem.title = "Categories"
@@ -29,6 +27,7 @@ class CategoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    // Add Category
     @objc func addCategory(_ sender: UIBarButtonItem) {
         //1. Create the alert controller.
         let alert = UIAlertController(title: "Add Category", message: "", preferredStyle: .alert)
@@ -47,14 +46,14 @@ class CategoryVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     "categoryName": textField!.text!,
                     "addedDate": Date().timeIntervalSince1970.description
                 ]
-                DBManager.shared.createTable(CATEGORIES_TABLE)
-                DBManager.shared.insertSingleValue(CATEGORIES_TABLE, CategoryDetailsModel(dict)) { success in
+                CoreDataManager.shared.insertData(CATEGORY_ENTITY, dict) { success in
                     if success {
                         AlertControl.shared.showAlert("Success", message: "Your data saved successfully", buttons: ["Ok"], completion: nil)
+                        self.arrayCategory = CoreDataManager.shared.getData(CATEGORY_ENTITY) as! [CategoryDetailsModel]
+                        self.tblVwCategory.reloadData()
                     }
                 }
-                self.arrayCategory = DBManager.shared.readData(nil, CATEGORIES_TABLE) as! [CategoryDetailsModel]
-                self.tblVwCategory.reloadData()
+                
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

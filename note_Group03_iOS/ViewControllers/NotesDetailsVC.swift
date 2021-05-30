@@ -44,21 +44,26 @@ class NotesDetailsVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // Delete Action
     @IBAction func btnActnDelete(_ sender: Any) {
         AlertControl.shared.showAlert("Alert!", message: "Do you want to delete this note?", buttons: ["Yes", "No"]) { index in
             if index == 0 {
-                DBManager.shared.removeOnlyRow(NOTES_TABLE, self.notesDetail.id)
                 for i in 0..<self.arrayImages.count {
-                    DBManager.shared.removeImage(self.arrayImages[i])
+                    FileSaveManager.shared.removeImage(self.arrayImages[i])
                 }
-                AlertControl.shared.showAlert("Success", message: "You have successfully deleted the note", buttons: ["Ok"]) { index in
-                    self.navigationController?.popViewController(animated: true)
+                CoreDataManager.shared.delete(NOTES_ENTITY, self.notesDetail.id) { success in
+                    if success {
+                        AlertControl.shared.showAlert("Success", message: "You have successfully deleted the note", buttons: ["Ok"]) { index in
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
                 }
             }
         }
         
     }
     
+    // Edit Action
     @IBAction func btnActnEdit(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "AddNotesVC") as! AddNotesVC
         vc.notesDetail = notesDetail

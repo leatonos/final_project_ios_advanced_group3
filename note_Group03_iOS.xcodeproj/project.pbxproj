@@ -12,6 +12,8 @@
 		274D45E526569FF100DF5F8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D45E426569FF100DF5F8B /* SceneDelegate.swift */; };
 		274D45EC26569FF800DF5F8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 274D45EB26569FF800DF5F8B /* Assets.xcassets */; };
 		274D45EF26569FF800DF5F8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274D45ED26569FF800DF5F8B /* LaunchScreen.storyboard */; };
+		BFB267222660A2DC00394355 /* note_Group03_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFB267202660A2DC00394355 /* note_Group03_iOS.xcdatamodeld */; };
+		BFB267242660A50C00394355 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB267232660A50C00394355 /* CoreDataManager.swift */; };
 		BFF711592656A1CF00774A28 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF711442656A1CE00774A28 /* ImageCell.xib */; };
 		BFF7115A2656A1CF00774A28 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF711452656A1CE00774A28 /* ImageCell.swift */; };
 		BFF7115B2656A1CF00774A28 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF711482656A1CE00774A28 /* CategoryCell.swift */; };
@@ -24,7 +26,7 @@
 		BFF711622656A1CF00774A28 /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF711512656A1CF00774A28 /* NotesVC.swift */; };
 		BFF711632656A1CF00774A28 /* AlertControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF711542656A1CF00774A28 /* AlertControl.swift */; };
 		BFF711642656A1CF00774A28 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF711562656A1CF00774A28 /* CameraHandler.swift */; };
-		BFF711652656A1CF00774A28 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF711582656A1CF00774A28 /* DBManager.swift */; };
+		BFF711652656A1CF00774A28 /* FileSaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF711582656A1CF00774A28 /* FileSaveManager.swift */; };
 		BFF711692656A24000774A28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF711682656A24000774A28 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		43B785077696302585B96926 /* Pods-note_Group03_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-note_Group03_iOS.release.xcconfig"; path = "Target Support Files/Pods-note_Group03_iOS/Pods-note_Group03_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8207635B1F27978C9DA25F2B /* Pods-note_Group03_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-note_Group03_iOS.debug.xcconfig"; path = "Target Support Files/Pods-note_Group03_iOS/Pods-note_Group03_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		B75732DD9ED0EF967F2C6C47 /* Pods_note_Group03_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_note_Group03_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFB267212660A2DC00394355 /* note_Group03_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = note_Group03_iOS.xcdatamodel; sourceTree = "<group>"; };
+		BFB267232660A50C00394355 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BFF711442656A1CE00774A28 /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		BFF711452656A1CE00774A28 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		BFF711482656A1CE00774A28 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -50,7 +54,7 @@
 		BFF711512656A1CF00774A28 /* NotesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
 		BFF711542656A1CF00774A28 /* AlertControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControl.swift; sourceTree = "<group>"; };
 		BFF711562656A1CF00774A28 /* CameraHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
-		BFF711582656A1CF00774A28 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		BFF711582656A1CF00774A28 /* FileSaveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSaveManager.swift; sourceTree = "<group>"; };
 		BFF711682656A24000774A28 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +102,7 @@
 				BFF711682656A24000774A28 /* Main.storyboard */,
 				274D45ED26569FF800DF5F8B /* LaunchScreen.storyboard */,
 				274D45F026569FF800DF5F8B /* Info.plist */,
+				BFB267202660A2DC00394355 /* note_Group03_iOS.xcdatamodeld */,
 			);
 			path = note_Group03_iOS;
 			sourceTree = "<group>";
@@ -210,7 +215,8 @@
 		BFF711572656A1CF00774A28 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				BFF711582656A1CF00774A28 /* DBManager.swift */,
+				BFF711582656A1CF00774A28 /* FileSaveManager.swift */,
+				BFB267232660A50C00394355 /* CoreDataManager.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 				BFF711622656A1CF00774A28 /* NotesVC.swift in Sources */,
 				BFF7115A2656A1CF00774A28 /* ImageCell.swift in Sources */,
 				BFF7115D2656A1CF00774A28 /* CategoryDetailsModel.swift in Sources */,
+				BFB267242660A50C00394355 /* CoreDataManager.swift in Sources */,
 				BFF711602656A1CF00774A28 /* CategoryVC.swift in Sources */,
 				274D45E326569FF100DF5F8B /* AppDelegate.swift in Sources */,
 				274D45E526569FF100DF5F8B /* SceneDelegate.swift in Sources */,
@@ -343,7 +350,8 @@
 				BFF7115E2656A1CF00774A28 /* NotesDetailsModel.swift in Sources */,
 				BFF711632656A1CF00774A28 /* AlertControl.swift in Sources */,
 				BFF711612656A1CF00774A28 /* NotesDetailsVC.swift in Sources */,
-				BFF711652656A1CF00774A28 /* DBManager.swift in Sources */,
+				BFB267222660A2DC00394355 /* note_Group03_iOS.xcdatamodeld in Sources */,
+				BFF711652656A1CF00774A28 /* FileSaveManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +547,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BFB267202660A2DC00394355 /* note_Group03_iOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BFB267212660A2DC00394355 /* note_Group03_iOS.xcdatamodel */,
+			);
+			currentVersion = BFB267212660A2DC00394355 /* note_Group03_iOS.xcdatamodel */;
+			path = note_Group03_iOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 274D45D726569FF100DF5F8B /* Project object */;
 }

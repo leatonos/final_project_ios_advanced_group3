@@ -22,7 +22,7 @@ struct NotesDetailsModel {
         id = dict["id"] as? Int ?? 0
         catId = dict["catId"] as? String ?? "0"
         title = dict["title"] as? String ?? ""
-        description = dict["description"] as? String ?? ""
+        description = dict["desc"] as? String ?? ""
         addedOn = dict["addedOn"] as? String ?? ""
         latitude = dict["latitude"] as? String ?? ""
         longitute = dict["longitute"] as? String ?? ""

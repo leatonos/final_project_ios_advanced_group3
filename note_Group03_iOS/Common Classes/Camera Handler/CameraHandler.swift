@@ -19,6 +19,7 @@ class CameraHandler: NSObject , UIImagePickerControllerDelegate, UINavigationCon
         super.init()
     }
     
+    // Image Pick Function
     func pickImage(_ viewController: UIViewController, _ callback: @escaping ((UIImage) -> ())) {
         
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
@@ -26,11 +27,11 @@ class CameraHandler: NSObject , UIImagePickerControllerDelegate, UINavigationCon
         pickImageCallback = callback;
         self.viewController = viewController;
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default){
-            UIAlertAction in
-            self.openCamera()
-        }
-        let gallaryAction = UIAlertAction(title: "Gallery", style: .default){
+//        let cameraAction = UIAlertAction(title: "Camera", style: .default){
+//            UIAlertAction in
+//            self.openCamera()
+//        }
+        let galleryAction = UIAlertAction(title: "Gallery", style: .default){
             UIAlertAction in
             self.openGallery()
         }
@@ -40,23 +41,24 @@ class CameraHandler: NSObject , UIImagePickerControllerDelegate, UINavigationCon
         
         // Add the actions
         picker.delegate = self
-        alert.addAction(cameraAction)
-        alert.addAction(gallaryAction)
+       // alert.addAction(cameraAction)
+        alert.addAction(galleryAction)
         alert.addAction(cancelAction)
         alert.popoverPresentationController?.sourceView = self.viewController!.view
         viewController.present(alert, animated: true, completion: nil)
     }
     
-    func openCamera(){
-       // alert.dismiss(animated: true, completion: nil)
-        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
-            picker.sourceType = .camera
-            self.viewController!.present(picker, animated: true, completion: nil)
-        } else {
-            AlertControl.shared.showAlert("", message: "You don't have camera", buttons: ["Ok"], completion: nil)
-        }
-    }
+//    func openCamera(){
+//       // alert.dismiss(animated: true, completion: nil)
+//        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+//            picker.sourceType = .camera
+//            self.viewController!.present(picker, animated: true, completion: nil)
+//        } else {
+//            AlertControl.shared.showAlert("", message: "You don't have camera", buttons: ["Ok"], completion: nil)
+//        }
+//    }
     
+    // Open Gallery
     func openGallery(){
        // alert.dismiss(animated: true, completion: nil)
         picker.sourceType = .photoLibrary

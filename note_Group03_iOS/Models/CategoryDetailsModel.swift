@@ -17,4 +17,19 @@ struct CategoryDetailsModel {
         categoryName = dict["categoryName"] as? String ?? ""
         addedDate = dict["addedDate"] as? String ?? ""
     }
+    
+    // To Dictionary
+    func toDict() -> [String: Any] {
+        var dict = [String: Any]()
+        if let id = id {
+            dict["id"] = id
+        }
+        if let categoryName = categoryName {
+            dict["categoryName"] = categoryName
+        }
+        if let addedDate = addedDate {
+            dict["addedDate"] = addedDate
+        }
+        return dict
+    }
 }
